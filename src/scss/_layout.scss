@@ -1,0 +1,19 @@
+html, body {
+  height: 100%;
+
+  > div {
+    min-height: 100%;
+  }
+}
+
+.pin-input + img {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.form-inactive {
+  .pin-input + img {
+    display: none;
+  }
+}

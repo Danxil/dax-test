@@ -38,21 +38,21 @@ gulp.task('dist', [
 
 gulp.task('clean', function (cb) {
   del.sync([config.bases.dist + '/**/*.*'], {force: true});
-  cb();
+  return cb();
 });
 
 gulp.task('copy', function () {
-  gulp.src(config.path.copy, {read: true})
+  return gulp.src(config.path.copy, {read: true})
     .pipe(gulp.dest(config.bases.dist));
 });
 
 gulp.task('fonts', function () {
-  gulp.src(config.path.fonts, {read: true})
+  return gulp.src(config.path.fonts, {read: true})
     .pipe(gulp.dest(config.bases.dist + '/fonts'));
 });
 
 gulp.task('copy:watch', function () {
-  gulp.watch(config.path.copy, ['copy']);
+  return gulp.watch(config.path.copy, ['copy']);
 });
 
 gulp.task('js:dev', function () {
@@ -71,14 +71,13 @@ gulp.task('js:dev', function () {
       standalone: true
     }))
 
-  streamqueue(
+  return streamqueue(
     {objectMode: true},
     vendorStream,
     devStream,
     templatesStream
   )
     .pipe(plug.concat('app.js'))
-    .pipe(plug.uglify())
     .pipe(plug.sourcemaps.write('../maps'))
     .pipe(gulp.dest(config.bases.dist + '/js'))
 });
@@ -99,7 +98,7 @@ gulp.task('js:prod', function () {
       standalone: true
     }))
 
-  streamqueue(
+  return streamqueue(
     {objectMode: true},
     vendorStream,
     devStream,
@@ -111,7 +110,7 @@ gulp.task('js:prod', function () {
 });
 
 gulp.task('js:watch', function () {
-  gulp.watch(config.path.scripts
+  return gulp.watch(config.path.scripts
     .concat(config.path.libs)
     .concat(config.path.html), [
     'js:dev'
@@ -127,13 +126,12 @@ gulp.task('css:dev', function () {
   var vendorStream = gulp.src(config.path.cssLibs)
     .pipe(plug.sourcemaps.init())
 
-  streamqueue(
+  return streamqueue(
     {objectMode: true},
     vendorStream,
     devStream
   )
     .pipe(plug.concat('app.css'))
-    .pipe(plug.minifyCss())
     .pipe(plug.sourcemaps.write('../maps'))
     .pipe(gulp.dest(config.bases.dist + '/css'))
 });
@@ -147,7 +145,7 @@ gulp.task('css:prod', function () {
   var vendorStream = gulp.src(config.path.cssLibs)
     .pipe(plug.sourcemaps.init())
 
-  streamqueue(
+  return streamqueue(
     {objectMode: true},
     vendorStream,
     devStream
@@ -158,7 +156,7 @@ gulp.task('css:prod', function () {
 });
 
 gulp.task('css:watch', function () {
-  gulp.watch(config.path.sass.watch
+  return gulp.watch(config.path.sass.watch
     .concat(config.path.cssLibs), [
     'css:dev'
   ]);
@@ -170,7 +168,7 @@ gulp.task('images:dev', function () {
 });
 
 gulp.task('images:watch', function () {
-  gulp.watch(config.path.images, ['images:dev']);
+  return gulp.watch(config.path.images, ['images:dev']);
 });
 
 gulp.task('images:prod', function () {
@@ -182,7 +180,7 @@ gulp.task('images:prod', function () {
 });
 
 gulp.task('webserver', function () {
-  gulp.src('dist/')
+  return gulp.src('dist/')
     .pipe(plug.webserver({
       fallback: 'index.html',
       livereload: true,

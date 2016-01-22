@@ -1,0 +1,54 @@
+<div class="col-sm-6 col-lg-4 col-sm-offset-3 col-lg-offset-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <strong class="">Login</strong>
+    </div>
+    <div class="panel-body">
+      <div ng-show="vm.message" class="alert alert-danger" role="alert">
+        {{vm.message}}
+      </div>
+      <form form-submit="vm.submitPin()"
+            id="authForm"
+            name="authForm"
+            class="form-horizontal"
+            ng-class="{'form-inactive': !vm.countSubmitRetries}"
+            novalidate>
+        <div class="form-group">
+          <label for="pin" class="col-sm-3 control-label">PIN</label>
+          <div class="col-sm-9">
+            <input ng-model="vm.credentials.pin"
+                   class="form-control pin-input"
+                   type="password"
+                   placeholder="Enter PIN..."
+                   maxlength="4"
+                   typing-filter="'[0-9]'"
+                   ng-virtual-keyboard="{kt: 'numbers', imageURI: '/images/keyboard.png'}">
+            <input ng-model="vm.credentials.pin"
+                   ng-hide="true"
+                   type="password"
+                   name="pin"
+                   required
+                   pattern="^[0-9]{4}$"
+                   id="pin"
+                   validity-respond
+                   custom-errors="{
+                      pattern: 'This field must contains four numbers from 0 to 9',
+                      required: 'This field is required'
+                    }">
+            <small ng-show="!vm.countSubmitRetries">3 wrong tries, wait 5 seconds...</small>
+          </div>
+        </div>
+        <div class="form-group last">
+          <div class="col-sm-offset-3 col-sm-9">
+            <button type="submit"
+                    class="btn btn-success btn-sm"
+                    ng-disabled="authForm.$invalid || !vm.countSubmitRetries">
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
