@@ -10,15 +10,26 @@
     '$resourceProvider',
     '$httpProvider',
     'toastr',
-    'VKI_CONFIG'
+    'VKI_CONFIG',
+    '$translateProvider',
+    'translateEn',
+    'translateRu'
   ];
 
   function configFn($locationProvider,
                     $resourceProvider,
                     $httpProvider,
                     toastr,
-                    VKI_CONFIG
+                    VKI_CONFIG,
+                    $translateProvider,
+                    translateEn,
+                    translateRu
   ) {
+    $translateProvider.translations('en', translateEn);
+    $translateProvider.translations('ru', translateRu);
+
+    $translateProvider.preferredLanguage('ru');
+
     VKI_CONFIG.layout.numbers = {
       name: "nubmers",
       keys: [

@@ -11,7 +11,8 @@
     'COUNT_SUBMIT_RETRIES',
     'FORM_FREEZE_DELAY',
     '$q',
-    'AuthService'
+    'AuthService',
+    '$translate'
   ];
 
   function AuthCtrl(
@@ -21,20 +22,25 @@
     COUNT_SUBMIT_RETRIES,
     FORM_FREEZE_DELAY,
     $q,
-    AuthService
+    AuthService,
+    $translate
   ) {
     function submitPin() {
       return $q(function(resolve, reject) {
         if (vm.credentials.pin == 2016)
           return resolve(true);
-        else
-          return reject({
-            data: {
-              status: 401,
-              error: {},
-              error_reason: 'PIN is not correct'
-            }
+        else {
+          return $translate('PIN_WRONG_ERROR').then(function(PIN_WRONG_ERROR) {
+            return reject({
+              data: {
+                status: 401,
+                error: {
+                },
+                error_reason: PIN_WRONG_ERROR
+              }
+            })
           })
+        }
       }).then(function(result) {
         AuthService.setLogged(true);
         $state.go('app.operations');

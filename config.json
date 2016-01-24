@@ -23,7 +23,8 @@
       "bower_components/angular-sanitize/angular-sanitize.js",
       "bower_components/angular-virtual-keyboard/release/angular-virtual-keyboard.js",
       "bower_components/angular-useragent-parser/release/angular-useragent-parser.js",
-      "bower_components/angular-slick/dist/slick.js"
+      "bower_components/angular-slick/dist/slick.js",
+      "bower_components/angular-translate/angular-translate.js"
     ],
     "sass": {
       "src": [

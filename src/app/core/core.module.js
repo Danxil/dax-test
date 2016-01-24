@@ -9,6 +9,7 @@
       'ui.router',
       'angular-virtual-keyboard',
       'angular-useragent-parser',
-      'slick'
+      'slick',
+      'pascalprecht.translate'
     ]);
 })();
