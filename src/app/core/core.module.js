@@ -8,6 +8,7 @@
       /* 3rd Party modules */
       'ui.router',
       'angular-virtual-keyboard',
-      'angular-useragent-parser'
+      'angular-useragent-parser',
+      'slick'
     ]);
 })();

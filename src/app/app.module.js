@@ -8,7 +8,10 @@
     'app.directives',
     'app.filters',
     'app.layout',
-    'app.auth'
+    'app.auth',
+    'app.operations',
+    'app.balance',
+    'app.withdrawal'
   ]);
 
 })();

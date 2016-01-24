@@ -5,3 +5,17 @@
     }
   }
 }
+
+.slick-prev:before,
+.slick-next:before {
+  font: normal normal normal 25px/1 FontAwesome;
+  color: #000;
+}
+
+.slick-prev:before {
+  content: '\f0a8';
+}
+
+.slick-next:before {
+  content: '\f0a9';
+}

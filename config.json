@@ -15,13 +15,15 @@
       "bower_components/jquery/dist/jquery.js",
       "bower_components/bootstrap/dist/js/bootstrap.min.js",
       "bower_components/toastr/toastr.min.js",
+      "bower_components/slick-carousel/slick/slick.js",
 
       "bower_components/angular/angular.js",
       "bower_components/angular-ui-router/release/angular-ui-router.js",
       "bower_components/angular-resource/angular-resource.js",
       "bower_components/angular-sanitize/angular-sanitize.js",
       "bower_components/angular-virtual-keyboard/release/angular-virtual-keyboard.js",
-      "bower_components/angular-useragent-parser/release/angular-useragent-parser.js"
+      "bower_components/angular-useragent-parser/release/angular-useragent-parser.js",
+      "bower_components/angular-slick/dist/slick.js"
     ],
     "sass": {
       "src": [
@@ -38,7 +40,9 @@
       "bower_components/bootstrap/dist/css/bootstrap.css",
       "bower_components/toastr/toastr.min.css",
       "bower_components/font-awesome/css/font-awesome.css",
-      "bower_components/angular-virtual-keyboard/release/angular-virtual-keyboard.css"
+      "bower_components/angular-virtual-keyboard/release/angular-virtual-keyboard.css",
+      "bower_components/slick-carousel/slick/slick.css",
+      "bower_components/slick-carousel/slick/slick-theme.css"
     ],
     "fonts": [
       "bower_components/font-awesome/fonts/*.*",

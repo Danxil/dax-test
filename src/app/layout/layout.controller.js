@@ -7,21 +7,25 @@
     LayoutCtrl.$inject = [
       '$rootScope',
       '$state',
+      'AuthService',
       '$window'
     ];
 
     function LayoutCtrl(
       $rootScope,
       $state,
+      AuthService,
       $window
     ) {
-      function activate() {
+      function exit() {
+        AuthService.setLogged(false);
+
+        $state.go('app.auth');
       }
 
+      var vm = this
 
-      var vm = this;
-
-      activate();
+      vm.exit = exit
     }
 
 })();

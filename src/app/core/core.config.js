@@ -52,13 +52,15 @@
   runFn.$inject = [
     '$rootScope',
     '$state',
-    '$stateParams'
+    '$stateParams',
+    'AuthService'
   ];
 
   function runFn(
       $rootScope,
       $state,
-      $stateParams
+      $stateParams,
+      AuthService
   ) {
     $rootScope.$stateParams = $stateParams
     $rootScope._ = _
@@ -70,7 +72,10 @@
         fromState,
         fromParams
     ) {
-
+      if (toState.requiredLogged && !AuthService.isLogged()) {
+        event.preventDefault();
+        $state.go('app.auth');
+      }
     })
   }
 

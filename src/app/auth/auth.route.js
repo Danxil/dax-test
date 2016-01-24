@@ -8,7 +8,7 @@
 
   function configFn($stateProvider) {
     $stateProvider
-        .state('app.login', {
+        .state('app.auth', {
           url: '/',
           controller: 'AuthCtrl',
           controllerAs: 'vm',

@@ -10,7 +10,8 @@
     '$timeout',
     'COUNT_SUBMIT_RETRIES',
     'FORM_FREEZE_DELAY',
-    '$q'
+    '$q',
+    'AuthService'
   ];
 
   function AuthCtrl(
@@ -19,12 +20,13 @@
     $timeout,
     COUNT_SUBMIT_RETRIES,
     FORM_FREEZE_DELAY,
-    $q
+    $q,
+    AuthService
   ) {
     function submitPin() {
       return $q(function(resolve, reject) {
         if (vm.credentials.pin == 2016)
-          return resolve(true)
+          return resolve(true);
         else
           return reject({
             data: {
@@ -34,14 +36,15 @@
             }
           })
       }).then(function(result) {
+        AuthService.setLogged(true);
+        $state.go('app.operations');
 
-
-        return $q.resolve(result)
+        return $q.resolve(result);
       }, function(result) {
         if (--vm.countSubmitRetries == 0)
           $timeout(function() {
             vm.countSubmitRetries = COUNT_SUBMIT_RETRIES;
-          }, FORM_FREEZE_DELAY)
+          }, FORM_FREEZE_DELAY);
 
         return $q.reject(result)
       })

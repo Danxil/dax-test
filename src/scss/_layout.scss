@@ -1,5 +1,6 @@
 html, body {
   height: 100%;
+  background: #FDFDF0;
 
   > div {
     min-height: 100%;
@@ -16,4 +17,9 @@ html, body {
   .pin-input + img {
     display: none;
   }
+}
+
+.fa-sign-out {
+  cursor: pointer;
+  font-size: 20px;
 }
