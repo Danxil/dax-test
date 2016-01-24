@@ -8,22 +8,36 @@
       '$rootScope',
       '$state',
       'AuthService',
+      '$translate'
     ];
 
     function LayoutCtrl(
       $rootScope,
       $state,
-      AuthService
+      AuthService,
+      $translate
     ) {
       function exit() {
         AuthService.setLogged(false);
         $state.go('app.auth');
       }
 
-      var vm = this
+      function changeLanguage(language) {
+        $translate.use(language)
 
-      vm.exit = exit
-      vm.isLogged = AuthService.isLogged
+        $state.go($state.current, {}, {reload: true});
+      }
+
+      function getLanguage(language) {
+        return $translate.use()
+      }
+
+      var vm = this;
+
+      vm.exit = exit;
+      vm.isLogged = AuthService.isLogged;
+      vm.changeLanguage = changeLanguage;
+      vm.getLanguage = getLanguage;
     }
 
 })();

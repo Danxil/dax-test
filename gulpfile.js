@@ -12,47 +12,54 @@ gulp.task('default', [
   'js:watch',
   'css:watch',
   'images:watch',
-  'copy:watch',
+  'index:watch',
 ], function () {
   gulp.start('webserver')
 });
 
 gulp.task('build', [
   'clean',
-  'copy',
+  'index:dev',
   'fonts',
   'js:dev',
   'css:dev',
   'images:dev',
 ]);
 
-gulp.task('dist', [
+gulp.task('prod', [
   'clean',
-  'copy',
+  'index:prod',
   'fonts',
   'js:prod',
   'css:prod',
   'images:prod',
-  'templates'
-]);
+], function () {
+  gulp.start('webserver')
+});
 
 gulp.task('clean', function (cb) {
   del.sync([config.bases.dist + '/**/*.*'], {force: true});
   return cb();
 });
 
-gulp.task('copy', function () {
-  return gulp.src(config.path.copy, {read: true})
+gulp.task('index:dev', function () {
+  return gulp.src(config.path.index, {read: true})
     .pipe(gulp.dest(config.bases.dist));
+});
+
+gulp.task('index:prod', function () {
+  return gulp.src(config.path.index, {read: true})
+    .pipe(plug.htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest(config.bases.dist));
+});
+
+gulp.task('index:watch', function () {
+  return gulp.watch(config.path.html, ['html']);
 });
 
 gulp.task('fonts', function () {
   return gulp.src(config.path.fonts, {read: true})
     .pipe(gulp.dest(config.bases.dist + '/fonts'));
-});
-
-gulp.task('copy:watch', function () {
-  return gulp.watch(config.path.copy, ['copy']);
 });
 
 gulp.task('js:dev', function () {

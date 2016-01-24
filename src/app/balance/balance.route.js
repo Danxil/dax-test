@@ -13,7 +13,7 @@
           controller: 'BalanceCtrl',
           controllerAs: 'vm',
           templateUrl: 'app/balance/balance.tpl.html',
-          //requiredLogged: true
+          requiredLogged: true
         });
   };
 

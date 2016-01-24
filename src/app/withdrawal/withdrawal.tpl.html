@@ -1,10 +1,10 @@
 <div class="container">
   <div class="page-header">
     <h1>
-      Withdrawal
+      {{'WITHDRAWAL' | translate}}
       <a class="btn btn-default pull-right mt-5"
         ui-sref="app.operations">
-        Back
+        {{'BACK' | translate}}
       </a>
     </h1>
   </div>
@@ -13,7 +13,7 @@
     <div class="form-group">
       <label for="amount"
              class="control-label">
-        Amount
+        {{'AMONT' | translate}}
       </label>
       <div class="row">
         <div class="col-sm-4">
@@ -22,11 +22,11 @@
                  name="amount"
                  id="amount"
                  ng-trim="false"
-                 placeholder="Enter amount..."
+                 placeholder="{{'ENTER_AMOUNT' | translate}}"
                  validity-respond
                  custom-errors="{
-                   pattern: 'This field must contain only numbers',
-                   required: 'This field is required'
+                   pattern: {{'\'' + ('PATTERN_ERROR_FOR_AMOUNT' | translate) + '\''}},
+                   required: {{'\'' + ('REQUIRED_ERROR' | translate) + '\''}}
                  }"
                  required
                  pattern="^[0-9]+(\.[0-9]{1,2})?$"
@@ -39,7 +39,7 @@
         <button type="submit"
                 class="btn btn-success btn-sm"
                 ng-disabled="withdrawal.$invalid">
-          Submit
+          {{'SUBMIT' | translate}}
         </button>
       </div>
     </div>

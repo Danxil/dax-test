@@ -55,7 +55,7 @@
     "images": [
       "src/images/*.{png,gif,jpg,jpeg}"
     ],
-    "copy": [
+    "index": [
       "src/index.html"
     ]
   }

@@ -1,14 +1,16 @@
 <div class="container">
   <div class="page-header">
-    <h1>Operations</h1>
+    <h1>{{'OPERATIONS' | translate}}</h1>
   </div>
-  <slick infinite="true"
-         slides-to-show="4"
-         slides-to-scroll="1">
-    <div ng-repeat="operation in vm.operations">
-      <h3 class="text-center">
-        <a ui-sref="app.{{operation.link}}">{{operation.name}}</a>
-      </h3>
-    </div>
-  </slick>
+  <div class="col-xs-12">
+    <slick slides-to-show="4"
+           slides-to-scroll="1"
+           responsive="vm.slickResponsiveSettings">
+      <div ng-repeat="operation in vm.operations">
+        <h3 class="text-center">
+          <a ui-sref="app.{{operation.link}}">{{operation.name}}</a>
+        </h3>
+      </div>
+    </slick>
+  </div>
 </div>

@@ -13,7 +13,7 @@
           controller: 'OperationsCtrl',
           controllerAs: 'vm',
           templateUrl: 'app/operations/operations.tpl.html',
-          //requiredLogged: true
+          requiredLogged: true
         });
   };
 })();
